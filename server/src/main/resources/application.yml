@@ -1,0 +1,11 @@
+server:
+  compression:
+    enabled: true
+  port: 8443
+  servlet:
+    context-path: /server
+
+logging:
+  level:
+    br.com.valandro: INFO
+    org.springframework.boot: INFO
