@@ -34,7 +34,7 @@ be made optional, but is generally required for at least one of the parties (typ
 
 #### Self signed root CA
 
-For signing our **server and client** side cerficates, we need first to create our self-signed root CA with the **openssl**
+For signing our **server and client** side cerficates, we need first to create our self-signed **root CA** with the **openssl**
 library.
 
 ```shell script
@@ -45,7 +45,7 @@ openssl req -x509 -sha256 -days 3560 -newkey rsa:4096 -keyout rootCA.key -out ro
 
 #### Server certificate
 
-After we created an root CA, we will create a new **server-side certificate** for signing them with our root CA. 
+After we created an root CA, we will create a new **server-side certificate** for signing them with our **root CA**. 
 You should use **localhost** as common name (`CN`).
 
 ```shell script
@@ -62,7 +62,7 @@ Now it's time to sign our **server.csr** with the **root CA**.
 
 ### Client certificate
 
-Repeat the process of generate a new certificate, and sign with the root CA.
+Repeat the process to generate a **new certificate**, and sign them with the **root CA**.
 
 >**Pass used 4rfv5tgb**
 
