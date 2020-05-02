@@ -4,6 +4,14 @@ server:
   port: 8443
   servlet:
     context-path: /server
+  ssl:
+    client-auth: need
+    key-store: target/serverKeyStore.p12
+    key-store-password: 2wsx3edc
+    key-store-type: PKCS12
+    trust-store: target/serverTrustStore.p12
+    trust-store-password: 2wsx3edc
+    trust-store-type: PKCS12
 
 logging:
   level:

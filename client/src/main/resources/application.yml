@@ -9,3 +9,7 @@ logging:
   level:
     br.com.valandro: INFO
     org.springframework.boot: INFO
+
+pass:
+  key-store: 4rfv5tgb
+  trust-store: 4rfv5tgb

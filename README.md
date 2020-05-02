@@ -93,6 +93,8 @@ openssl pkcs12 -export -out serverKeyStore.p12 -inkey server.key -in server.crt
 openssl pkcs12 -export -out clientKeyStore.p12 -inkey client.key -in client.crt
 ```
 
+>**Pass used 4rfv5tgb**
+
 #### Trust store
 
 A truststore is the opposite – while a keystore typically holds onto certificates that identify us, a truststore holds 
@@ -104,14 +106,26 @@ be set up successfully.
 
 ##### Generating
 
-Actually you don't need to generate them, for using the trust store to only communicate with a certain application, 
-you should import the clientKeyStore.p12 in server's trust store, and do the opposite in the client.
+You should import the server certificate into the client trust store.
+
+````shell script
+ keytool -importcert -file server.crt -keystore clientTrustStore.p12 -alias serverCert
+````
 
 >**Pass used 4rfv5tgb**
 
+
+You should import the client certificate into the server trust store.
+
+````shell script
+ keytool -importcert -file client.crt -keystore serverTrustStore.p12 -alias clientCert
+````
+
+>**Pass used 2wsx3edc**
+
 ### Notes
 
->**You should generate new certificates for running this project.** 
+>**You should generate new certificates for running this project. They probally expired already.** 
 
 ### Enviroment and Tools
 
