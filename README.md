@@ -9,12 +9,12 @@ or an individual), and is either **signed by a certificate authority** or **self
 
 ### Transport Layer Security (TLS)
 
-`Transport Layer Security` (TLS), and its now-deprecated predecessor, `Secure Sockets Layer (SSL), are cryptographic 
-protocols designed to provide communications security over a computer network. The TLS protocol aims primarily to 
+`Transport Layer Security` (TLS), and its now-deprecated predecessor, `Secure Sockets Layer` (SSL), are cryptographic 
+protocols designed to provide communications security **over** a computer network. The TLS protocol aims primarily to 
 provide privacy and data integrity between two or more communicating computer applications. When secured by TLS, 
 connections between a client and a server should have one or more of the following properties:
 
-- The connection is private (or secure) because symmetric cryptography is used to encrypt the data transmitted. 
+- The connection is private (or secure) because **symmetric cryptography** is used to encrypt the data transmitted. 
 The keys for this symmetric encryption are generated uniquely for each connection and are based on a shared secret that 
 was negotiated at the start of the session (**TLS handshake**). The server and client negotiate the details of which 
 encryption algorithm and cryptographic keys to use before the first byte of data is transmitted. The negotiation of a 
@@ -34,18 +34,18 @@ be made optional, but is generally required for at least one of the parties (typ
 
 #### Self signed root CA
 
-For signing our **server and client** side cerficates, we need first to create our self-signed **root CA** with the **openssl**
-library.
+For signing our **server and client** side cerficates, we need first to create our self-signed **root CA** with the 
+**openssl** library.
 
 ```shell script
-openssl req -x509 -sha256 -days 3560 -newkey rsa:4096 -keyout rootCA.key -out rootCA.crt
+openssl req -x509 -sha256 -days 356 -newkey rsa:4096 -keyout rootCA.key -out rootCA.crt
 ```
 
 >**Pass used 1qaz2wsx**
 
 #### Server certificate
 
-After we created an root CA, we will create a new **server-side certificate** for signing them with our **root CA**. 
+After we created an **root CA**, we'll create a new **server-side certificate** for signing them with our **root CA**. 
 You should use **localhost** as common name (`CN`).
 
 ```shell script
@@ -81,7 +81,7 @@ the private key from the keystore and presents its corresponding public key and 
 
 ##### Generating
 
-First of all, for creating the keystores based on respective certificates.
+First of all, for creating the keystores (`jks or pkcs12`) we should use our **server certificate** and their **private key**.
 
 ```shell script
 openssl pkcs12 -export -out serverKeyStore.p12 -inkey server.key -in server.crt
@@ -113,7 +113,6 @@ You should import the server certificate into the client trust store.
 ````
 
 >**Pass used 4rfv5tgb**
-
 
 You should import the client certificate into the server trust store.
 
